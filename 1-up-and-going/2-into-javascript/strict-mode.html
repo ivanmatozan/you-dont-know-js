@@ -1,0 +1,17 @@
+<script>
+    function foo() {
+        "use strict";
+
+        // this code is strict mode
+
+        a = 1; // ReferenceError
+
+        function bar() {
+            // this code is strict mode
+        }
+    }
+
+    // this code is not strict mode
+
+    foo();
+</script>

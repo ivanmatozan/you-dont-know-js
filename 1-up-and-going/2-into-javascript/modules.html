@@ -1,0 +1,20 @@
+<script>
+    function User() {
+        var userName, password;
+
+        function doLogin(user, pwd) {
+            userName = user;
+            password = pwd;
+            // do the rest of the login work
+        }
+
+        var publicApi = {
+            login: doLogin
+        };
+
+        return publicApi;
+    }
+
+    var fred = User();
+    fred.login("fred", "123456");
+</script>

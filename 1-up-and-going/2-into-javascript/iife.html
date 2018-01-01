@@ -1,0 +1,22 @@
+<script>
+    // Immediately Invoked Function Expressions (IIFEs)
+    (function iife() {
+        console.log("hello");
+    })();
+    // "hello"
+
+    var a = 42;
+
+    (function () {
+        var a = 10;
+        console.log(a); // 10
+    })();
+
+    console.log(a); // 42
+
+    var x = (function () {
+        return 42;
+    })();
+
+    console.log(x); // 42
+</script>

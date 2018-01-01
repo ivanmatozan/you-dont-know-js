@@ -1,0 +1,19 @@
+<script>
+    var obj = {
+        a: "Hello, World!",
+        b: 42,
+        c: true
+    };
+
+    console.log(obj.a); // "Hello, World!"
+    console.log(obj.b); // 42
+    console.log(obj.c); // true
+
+    console.log(obj["a"]); // "Hello, World!"
+    console.log(obj["b"]); // 42
+    console.log(obj["c"]); // true
+
+    var b = "a";
+    console.log(obj[b]); // "Hello, World!"
+    console.log(obj["b"]); // 42
+</script>

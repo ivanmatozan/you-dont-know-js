@@ -1,0 +1,13 @@
+<script>
+    var foo = {
+        a: 42
+    };
+
+    // Create object 'bar' and link it to object 'foo'
+    var bar = Object.create(foo);
+
+    bar.b = "Hello, World!";
+
+    console.log(bar.b); // "Hello, World!"
+    console.log(bar.a); // 42
+</script>
