@@ -1,0 +1,18 @@
+<script>
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2,
+        foo: foo
+    };
+
+    var obj2 = {
+        a: 42,
+        obj: obj
+    };
+
+    obj.foo(); // 2
+    obj2.obj.foo(); // 2
+</script>

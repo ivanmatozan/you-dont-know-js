@@ -1,0 +1,54 @@
+<script>
+    // implicit binding or explicit binding
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj1 = {
+        a: 1,
+        foo: foo
+    };
+
+    var obj2 = {
+        a: 2,
+        foo: foo
+    };
+
+    obj1.foo(); // 1
+    obj2.foo(); // 2
+
+    obj1.foo.call(obj2); // 2
+    obj2.foo.call(obj1); // 1
+
+    // new binding or implicit binding
+    function bar(something) {
+        this.a = something;
+    }
+
+    var obj3 = {
+        bar: bar
+    };
+
+    var obj4 = {};
+
+    obj3.bar(3);
+    console.log(obj3.a); // 3
+
+    obj3.bar.call(obj4, 4);
+    console.log(obj4.a); // 4
+
+    var baz = new obj3.bar(33);
+    console.log(obj3.a); // 3
+    console.log(baz.a); // 33
+
+    // new binding or explicit  binding
+    var obj5 = {};
+
+    var qux = bar.bind(obj5);
+    qux(2);
+    console.log(obj5.a); // 2
+
+    var quux = new qux(3);
+    console.log(obj5.a); // 2
+    console.log(quux.a); // 3
+</script>

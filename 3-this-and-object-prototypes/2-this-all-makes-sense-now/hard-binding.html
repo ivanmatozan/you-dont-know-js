@@ -1,0 +1,41 @@
+<script>
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2
+    };
+
+    var obj2 = {
+        a: 42
+    };
+
+    var bar = function () {
+        foo.call(obj);
+    };
+
+    bar(); // 2
+    // setTimeout(bar, 100); // 2
+
+    // 'bar' hard binds 'foo' 'this' to 'obj'
+    // so that it can't be overriden
+    bar.call(obj2); // 2
+
+    // simple 'bind' helper
+    function bind(fn, obj) {
+        return function () {
+            return fn.apply(obj, arguments)
+        }
+    }
+
+    function someFun(something) {
+        return this.a + something;
+    }
+
+    var baz = bind(someFun, obj);
+    console.log(baz(14)); // 16
+
+    var baz2 = someFun.bind(obj);
+    console.log(baz2(15)); // 17
+</script>

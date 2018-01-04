@@ -1,0 +1,16 @@
+<script>
+    function foo(a) {
+        this.a = a;
+    }
+
+    var bar = new foo(2);
+    console.log(bar.a); // 2
+    
+    function baz(p1, p2) {
+        this.val = p1 + p2;
+    }
+
+    var qux = baz.bind(null, 1);
+    var quux = new qux(2);
+    console.log(quux.val); // 3
+</script>

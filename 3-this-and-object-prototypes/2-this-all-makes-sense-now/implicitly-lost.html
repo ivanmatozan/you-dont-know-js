@@ -1,0 +1,25 @@
+<script>
+    function foo() {
+        console.log(this.a);
+    }
+
+    var obj = {
+        a: 2,
+        foo: foo
+    };
+
+    var a = "global";
+
+    var bar = obj.foo; // function reference/alias
+
+    bar(); // "global"
+
+    function doFoo(fn) {
+        // 'fn' is another reference to 'foo'
+        fn();
+    }
+
+    doFoo(obj.foo); // "global"
+
+    setTimeout(obj.foo, 100); // "global"
+</script>
