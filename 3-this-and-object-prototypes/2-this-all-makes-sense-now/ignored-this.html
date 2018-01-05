@@ -1,0 +1,23 @@
+<script>
+    function foo() {
+        console.log(this.a);
+    }
+
+    var a = "default";
+
+    foo.call(null); // "default"
+    
+    function bar(a, b) {
+        console.log("a: " + a + ", b: " + b);
+    }
+
+    // safer this
+    var emptyObj = Object.create(null);
+
+    // spread out array as a parameters
+    bar.apply(emptyObj, [2, 3]); // "a: 2, b: 3"
+
+    // currying with 'bind'
+    var baz = bar.bind(emptyObj, 4);
+    baz(5); // "a: 4, b: 5"
+</script>
