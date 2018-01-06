@@ -1,0 +1,58 @@
+<script>
+    "use strict";
+
+    var obj = {
+        a: 1
+    };
+
+    console.log(Object.getOwnPropertyDescriptor(obj, "a"));
+    // {
+    //    value: 2,
+    //    writable: true,
+    //    enumerable: true,
+    //    configurable: true
+    // }
+
+    var obj2 = {};
+
+    Object.defineProperty(obj2, "a", {
+        value: 11,
+        writable: true,
+        configurable: true,
+        enumerable: true
+    });
+
+    console.log(obj2.a); // 11
+
+    // Writable - The ability for you to change the value of a property
+    Object.defineProperty(obj2, "b", {
+        value: 2,
+        writable: false, // not writable
+        configurable: true,
+        enumerable: true
+    });
+
+    // obj2.b = 3;
+    console.log(obj2.b);
+    // without "strict mode": 2
+    // TypeError: Cannot assign to read only property 'b' of object
+
+    // Configurable - can we modify descriptor definition using 'defineProperty(..)'
+    Object.defineProperty(obj2, "c", {
+        value: 2,
+        writable: true,
+        configurable: false, // not configurable
+        enumerable: true
+    });
+
+    // Object.defineProperty(obj2, "c", {
+    //     value: 6,
+    //     writable: true,
+    //     configurable: true,
+    //     enumerable: true
+    // });
+    // TypeError: Cannot redefine property: c
+
+    console.log(obj2.c); // 2
+    // delete obj2.c; // TypeError: Cannot delete property 'c' of object
+</script>

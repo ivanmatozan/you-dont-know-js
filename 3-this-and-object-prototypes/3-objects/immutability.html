@@ -1,0 +1,32 @@
+<script>
+    var obj = {
+        a: 1
+    };
+
+    Object.defineProperty(obj, "FAVORITE_NUMBER", {
+        value: 42,
+        writable: false,
+        configurable: false
+    });
+
+    // Prevent Extensions
+    Object.preventExtensions(obj);
+    obj.b = 2;
+    console.log(obj.b); // undefined
+
+    // Seal - calls 'preventExtensions' and marks all its
+    // existing properties as configurable:false
+    var obj2 = {
+        a: 1
+    };
+
+    Object.seal(obj2);
+
+    // Freeze - call 'seal' and marks all "data accessor"
+    // properties as writable:false
+    var obj3 = {
+        a: 1
+    };
+
+    Object.freeze(obj3);
+</script>

@@ -1,0 +1,82 @@
+<script>
+    var arr = [1, 4, 7];
+
+    var obj = {
+        a: 2,
+        b: 5,
+        c: 8
+    };
+
+    for (var i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+    // 1
+    // 4
+    // 7
+
+    for (var v of arr) {
+        console.log(v);
+    }
+    // 1
+    // 4
+    // 7
+
+    var it = arr[Symbol.iterator]();
+    console.log(it.next()); // {value: 1, done: false}
+    console.log(it.next()); // {value: 4, done: false}
+    console.log(it.next()); // {value: 7, done: false}
+    console.log(it.next()); // {value: undefined, done: true}
+
+    Object.defineProperty(obj, Symbol.iterator, {
+        enumerable: false,
+        writable: false,
+        configurable: true,
+        value: function () {
+            var o = this;
+            var idx = 0;
+            var keys = Object.keys(o);
+
+            return {
+                next: function () {
+                    return {
+                        value: o[keys[idx++]],
+                        done: (idx > keys.length)
+                    };
+                }
+            };
+        }
+    });
+
+    var itO = obj[Symbol.iterator]();
+    console.log(itO.next()); // {value: 2, done: true}
+    console.log(itO.next()); // {value: 5, done: true}
+    console.log(itO.next()); // {value: 8, done: true}
+    console.log(itO.next()); // {value: undefined, done: false}
+
+    for (var val of obj) {
+        console.log(val);
+    }
+    // 2
+    // 5
+    // 8
+    
+    var random = {
+        [Symbol.iterator]: function () {
+            return {
+                next: function () {
+                    return {
+                        value: Math.random()
+                    };
+                }
+            };
+        }
+    };
+
+    var randomPool = [];
+    for (var n of random) {
+        randomPool.push(n);
+        if (randomPool.length === 100) {
+            break;
+        }
+    }
+</script>

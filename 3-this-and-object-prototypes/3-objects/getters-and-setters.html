@@ -1,0 +1,32 @@
+<script>
+    var obj = {
+        // define a getter for 'a'
+        get a() {
+            return 1;
+        },
+        // define a getter for 'c'
+        get c() {
+            return this._c_;
+        },
+        // define a setter for 'c'
+        set c(val) {
+            this._c_ = val * 2;
+        }
+    };
+
+    Object.defineProperty(obj, "b", {
+        // define a getter for 'b'
+        get: function () {
+            return this.a * 2;
+        },
+        enumerable: true
+    });
+
+    console.log(obj.a); // 1
+    console.log(obj.b); // 2
+    obj.a = 3;
+    console.log(obj.a); // 1
+
+    obj.c = 4;
+    console.log(obj.c); // 8
+</script>

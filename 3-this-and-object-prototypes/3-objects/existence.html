@@ -1,0 +1,17 @@
+<script>
+    var obj = {
+        a: 1
+    };
+
+    console.log("a" in obj); // true
+    console.log("b" in obj); // false
+
+    console.log(obj.hasOwnProperty("a")); // true
+    console.log(obj.hasOwnProperty("b")); // false
+
+    var emptyObject = Object.create(null);
+    emptyObject.a = 2;
+    // console.log(emptyObject.hasOwnProperty("a")); // TypeError: emptyObject.hasOwnProperty is not a function
+    console.log(Object.prototype.hasOwnProperty.call(emptyObject, "a")); // true
+    console.log(Object.prototype.hasOwnProperty.call(emptyObject, "b")); // false
+</script>

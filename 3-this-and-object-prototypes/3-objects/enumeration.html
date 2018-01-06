@@ -1,0 +1,27 @@
+<script>
+    var obj = {};
+
+    Object.defineProperty(obj, "a", {
+        value: 1,
+        enumerable: true
+    });
+
+    Object.defineProperty(obj, "b", {
+        value: 2,
+        enumerable: false
+    });
+
+    console.log(obj.b); // 2
+    console.log("b" in obj); // true
+    console.log(obj.hasOwnProperty("b")); // true
+
+    for (var k in obj) {
+        console.log(k, obj[k]);
+    }
+    // "a" 1
+
+    console.log(obj.propertyIsEnumerable("a")); // true
+    console.log(obj.propertyIsEnumerable("b")); // false
+    console.log(Object.keys(obj)); // ["a"]
+    console.log(Object.getOwnPropertyNames(obj)); // ["a", "b"]
+</script>
