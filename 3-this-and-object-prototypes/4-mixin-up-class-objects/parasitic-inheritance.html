@@ -1,0 +1,37 @@
+<script>
+    function Vehicle() {
+        this.engines = 1;
+    }
+
+    Vehicle.prototype.ignition = function () {
+        console.log("Turn on my engine.");
+    };
+    
+    Vehicle.prototype.drive = function () {
+        console.log("Steering and moving forward!");
+    };
+    
+    // Parasitic class 'Car'
+    function Car() {
+        // 'car' is 'Vehicle'
+        var car = new Vehicle();
+
+        car.wheels = 4;
+        var parentDrive = car.drive;
+
+        // override
+        car.drive = function () {
+            parentDrive.call(this);
+            console.log("Rolling on all " + this.wheels + " wheels!");
+        };
+
+        return car;
+    }
+
+    // var myCar = new Car();
+    var myCar = Car();
+
+    myCar.drive();
+    // "Steering and moving forward!"
+    // "Rolling on all 4 wheels!"
+</script>
