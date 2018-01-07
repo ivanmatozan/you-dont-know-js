@@ -1,0 +1,20 @@
+<script>
+    var obj = {
+        a: 1
+    };
+
+    var anotherObj = Object.create(obj);
+
+    console.log(obj.a); // 1
+    console.log(anotherObj.a); // 1
+
+    console.log(obj.hasOwnProperty("a")); // true
+    console.log(anotherObj.hasOwnProperty("a")); // false
+
+    anotherObj.a++; // implicit shadowing
+
+    console.log(obj.a); // 1
+    console.log(anotherObj.a); // 2
+
+    console.log(anotherObj.hasOwnProperty("a")); // true
+</script>

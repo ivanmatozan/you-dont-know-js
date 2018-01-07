@@ -1,0 +1,32 @@
+<script>
+    function Foo(name) {
+        this.name = name;
+    }
+
+    Foo.prototype.myName = function () {
+        return this.name;
+    };
+
+    function Bar(name, label) {
+        Foo.call(this, name);
+        this.label = label;
+    }
+
+    // Make new 'Bar.prototype' linked to Foo.prototype
+    // pre ES6
+    // throws away default existing 'Bar.prototype'
+    Bar.prototype = Object.create(Foo.prototype);
+    // ES6+
+    // modifies existing 'Bar.prototype'
+    Object.setPrototypeOf(Bar.prototype, Foo.prototype);
+    // Bar.prototype = Foo.prototype; // doesn't work
+    // Bar.prototype = new Foo(); // works with side-effects
+
+    Bar.prototype.myLabel = function () {
+        return this.label;
+    };
+
+    var a = new Bar("A name", "A label");
+    console.log(a.myName()); // "A name"
+    console.log(a.myLabel()); // "A label"
+</script>

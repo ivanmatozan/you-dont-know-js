@@ -1,0 +1,7 @@
+<script>
+    var a = {};
+    var b = Object.create(a);
+
+    console.log(a.isPrototypeOf(b)); // true
+    console.log(Object.getPrototypeOf(b) === a); // true
+</script>

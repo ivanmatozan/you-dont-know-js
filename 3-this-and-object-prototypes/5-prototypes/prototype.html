@@ -1,0 +1,18 @@
+<script>
+    var obj = {
+        a: 1
+    };
+
+    var anotherObject = Object.create(obj);
+
+    console.log(anotherObject.a); // 1
+
+    for (var key in anotherObject) {
+        console.log(key);
+    }
+    // "a"
+
+    console.log("a" in anotherObject); // true
+
+    console.log(anotherObject.something); // undefined
+</script>

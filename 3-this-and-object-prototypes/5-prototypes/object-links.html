@@ -1,0 +1,37 @@
+<script>
+    var foo = {
+        something: function () {
+            console.log("Tell me something good...");
+        }
+    };
+
+    var bar = Object.create(foo);
+
+    bar.something(); // "Tell me something good..."
+
+    var obj1 = {
+        a: 1
+    };
+
+    var obj2 = Object.create(obj1, {
+        b: {
+            enumerable: false,
+            writable: true,
+            configurable: true,
+            value: 2
+        },
+        c: {
+            enumerable: true,
+            writable: false,
+            configurable: false,
+            value: 3
+        }
+    });
+
+    console.log(obj2.hasOwnProperty("a")); // false
+    console.log(obj2.hasOwnProperty("b")); // true
+    console.log(obj2.hasOwnProperty("c")); // true
+    console.log(obj2.a); // 1
+    console.log(obj2.b); // 2
+    console.log(obj2.c); // 3
+</script>

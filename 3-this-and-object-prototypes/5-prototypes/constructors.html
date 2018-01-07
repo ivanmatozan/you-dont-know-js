@@ -1,0 +1,17 @@
+<script>
+    function Foo() {
+        //
+    }
+
+    console.log(Foo.prototype.constructor === Foo); // true
+
+    var a = new Foo();
+    console.log(a.constructor === Foo); // true
+
+    function NothingSpecial() {
+        console.log("Don't mind me");
+    }
+
+    var b = new NothingSpecial();
+    // "Don't mind me"
+</script>

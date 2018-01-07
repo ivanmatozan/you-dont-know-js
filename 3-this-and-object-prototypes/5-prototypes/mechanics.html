@@ -1,0 +1,33 @@
+<script>
+    function Foo(name) {
+        this.name = name;
+    }
+
+    Foo.prototype.myName = function () {
+        return this.name;
+    };
+
+    var a = new Foo("a");
+    var b = new Foo("b");
+
+    console.log(a.myName()); // "a"
+    console.log(b.myName()); // "b"
+
+    // "Constructor" redux
+    function Bar() {
+        //
+    }
+
+    Bar.prototype = {};
+    var c = new Bar();
+    console.log(c.constructor === Bar); // false
+    console.log(c.constructor === Object); // true
+
+    // Need to properly "fix" the missing 'constructor"
+    Bar.defineProperty(Foo.prototype, "constructor", {
+        enumerable: false,
+        writable: true,
+        configurable: true,
+        value: Bar // point 'constructor' to 'Bar'
+    });
+</script>
