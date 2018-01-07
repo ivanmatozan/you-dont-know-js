@@ -1,0 +1,50 @@
+<script>
+    // OO style
+    function Foo(name) {
+        this.name = name;
+    }
+    
+    Foo.prototype.identify = function () {
+        return "I am " + this.name;
+    };
+
+    function Bar(name) {
+        Foo.call(this, name);
+    }
+
+    Bar.prototype = Object.create(Foo.prototype);
+    
+    Bar.prototype.speak = function () {
+        console.log("Hello, " + this.identify() + ".");
+    };
+
+    var b1 = new Bar("b1");
+    var b2 = new Bar("b2");
+
+    b1.speak(); // "Hello, I am b1."
+    b2.speak(); // "Hello, I am b2."
+
+    // OLOO style
+    var Baz = {
+        init: function (name) {
+            this.name = name;
+        },
+        identify: function () {
+            return "I am " + this.name;
+        }
+    };
+
+    var Qux = Object.create(Baz);
+
+    Qux.speak = function () {
+        console.log("Hello, " + this.identify() + ".");
+    };
+
+    var q1 = Object.create(Qux);
+    q1.init("q1");
+    var q2 = Object.create(Qux);
+    q2.init("q2");
+
+    q1.speak(); // "Hello, I am q1."
+    q2.speak(); // "Hello, I am q2."
+</script>

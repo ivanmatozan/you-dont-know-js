@@ -1,0 +1,28 @@
+<script>
+    var Task = {
+        setId: function (id) {
+            this.id = id
+        },
+        outputId: function () {
+            console.log(this.id);
+        }
+    };
+
+    // Make 'xyz' delegate to 'Task'
+    var xyz = Object.create(Task);
+
+    xyz.prepareTask = function (id, label) {
+        this.setId(id);
+        this.label = label;
+    };
+
+    xyz.outputTaskDetails = function () {
+        this.outputId();
+        console.log(this.label);
+    };
+
+    xyz.prepareTask(1, "Label");
+    xyz.outputTaskDetails();
+    // 1
+    // "Label"
+</script>

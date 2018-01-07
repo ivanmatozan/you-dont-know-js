@@ -1,0 +1,83 @@
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+
+<input type="text" id="username" value="ivan">
+<input type="password" id="password" value="12345">
+
+<script>
+    var LoginController = {
+        errors: [],
+
+        getUser: function () {
+            return document.getElementById("username").value;
+        },
+        
+        getPassword: function () {
+            return document.getElementById("password").value;
+        },
+        
+        validateEntry: function (username, password) {
+            username = username || this.getUser();
+            password = password || this.getPassword();
+
+            if (!(username && password)) {
+                return this.failure("Please enter username and password!");
+            } else if (password.length < 5) {
+                return this.failure("Password must be 5+ characters!");
+            }
+
+            return true;
+        },
+        
+        showDialog: function (title, msg) {
+            // display title and message to user in dialog
+        },
+
+        failure: function (err) {
+            this.errors.push(err);
+            this.showDialog("Error", "Login invalid" + err);
+        }
+    };
+
+    // Link 'AuthController' to delegate to 'LoginController'
+    var AuthController = Object.create(LoginController);
+
+    AuthController.errors = [];
+
+    AuthController.checkAuth = function () {
+        var username = this.getUser();
+        var password = this.getPassword();
+
+        if (this.validateEntry(username, password)) {
+            this.server("/check-auth", {
+                username,
+                password
+            })
+            .then(this.accepted.bind(this))
+            .fail(this.failure.bind(this));
+        }
+    };
+    
+    AuthController.server = function (url, data) {
+        return $.ajax({
+            url,
+            data
+        });
+    };
+    
+    AuthController.accepted = function () {
+        this.showDialog("Success", "Authenticated!");
+    };
+
+    AuthController.rejected = function (err) {
+        this.failure("Auth Failed: " + err);
+    };
+
+    AuthController.checkAuth();
+
+    var controller1 = Object.create(AuthController);
+    var controller2 = Object.create(AuthController);
+
+    controller1.checkAuth();
+</script>

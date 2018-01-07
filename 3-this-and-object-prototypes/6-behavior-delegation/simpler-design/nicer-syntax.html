@@ -1,0 +1,30 @@
+<script>
+    var LoginController = {
+        errors: [],
+
+        // Concise method
+        getUser() { // no 'function' keyword
+            // ...
+        },
+
+        // Concise method
+        getPassword() { // no 'function' keyword
+            // ...
+        }
+    };
+
+    var AuthController = {
+        errors: [],
+
+        checkAuth() {
+            // ...
+        },
+
+        server(url, data) {
+            // ...
+        }
+    };
+
+    // NOW, link 'AuthController' to delegate to 'LoginController'
+    Object.setPrototypeOf(AuthController, LoginController);
+</script>

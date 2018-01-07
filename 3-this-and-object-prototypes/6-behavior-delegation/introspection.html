@@ -1,0 +1,12 @@
+<script>
+    var Foo = {};
+    var Bar = Object.create(Foo);
+    var b = Object.create(Bar);
+
+    console.log(Foo.isPrototypeOf(Bar)); // true
+    console.log(Object.getPrototypeOf(Bar) === Foo); // true
+
+    console.log(Foo.isPrototypeOf(b)); // true
+    console.log(Bar.isPrototypeOf(b)); // true
+    console.log(Object.getPrototypeOf(b) === Bar); // true
+</script>
