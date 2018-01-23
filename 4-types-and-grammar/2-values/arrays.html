@@ -1,0 +1,30 @@
+<script>
+    var foo = [1, "2", [3]];
+    console.log(foo.length); // 3
+    console.log(foo[0] === 1); // true
+    console.log(foo[2][0] === 3); // true
+
+    var bar = [];
+    bar[0] = 1;
+    bar[1] = "2";
+    bar[2] = [3];
+    bar["foobar"] = 4;
+    console.log(bar["foobar"]); // 4
+    console.log(bar.length); // 3
+    bar["13"] = 42;
+    console.log(bar.length); // 14
+
+    var baz = [];
+    baz[0] = 1;
+    baz[2] = [3];
+    console.log(baz[1]); // undefined
+    console.log(baz.length); // 3
+
+    // Array-Likes
+    function qux() {
+        var arr = Array.from(arguments);
+        arr.push("baz");
+        console.log(arr);
+    }
+    qux("foo", "bar"); // ["foo", "bar", "baz"]
+</script>
