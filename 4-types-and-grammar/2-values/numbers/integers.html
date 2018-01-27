@@ -1,0 +1,18 @@
+<script>
+    // Safe integer ranges
+    console.log(Number.MAX_VALUE); // 1.7976931348623157e+308
+    console.log(Number.MIN_VALUE); // 5e-324
+    console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+    console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
+
+    // Testing for integers
+    console.log(Number.isInteger(42)); // true
+    console.log(Number.isInteger(42.000)); // true
+    console.log(Number.isInteger(42.3)); // false
+    console.log(Number.isSafeInteger(Number.MAX_SAFE_INTEGER)); // true
+    console.log(Number.isSafeInteger(Math.pow(2, 53))); // false
+    console.log(Number.isSafeInteger(Math.pow(2, 53) - 1)); // true
+
+    var z = 42;
+    console.log(void z, z); // undefined, 42
+</script>

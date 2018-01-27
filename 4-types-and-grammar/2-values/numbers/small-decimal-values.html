@@ -1,0 +1,14 @@
+<script>
+    console.log(0.1 + 0.2 == 0.3); // false
+    console.log(Number.EPSILON); // 2.220446049250313e-16
+
+    function  numbersCloseEnoughToEqual(x, y) {
+        return Math.abs(x - y) < Number.EPSILON;
+    }
+
+    var x = 0.1 + 0.2;
+    var y = 0.3;
+
+    console.log(numbersCloseEnoughToEqual(x, y)); // true
+    console.log(numbersCloseEnoughToEqual(0.00000001, 0.00000002)); // false
+</script>

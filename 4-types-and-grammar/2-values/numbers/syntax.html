@@ -1,0 +1,38 @@
+<script>
+    var a = 5e10;
+    console.log(a); // 50000000000
+    console.log(a.toExponential()); // "5e+10"
+
+    var b = a * a;
+    console.log(b); // 2.5e+21
+
+    var c = 1 / a;
+    console.log(c); // 2e-11
+
+    var d = 42.59;
+    console.log(d.toFixed(0)); // "43"
+    console.log(d.toFixed(1)); // "42.6"
+    console.log(d.toFixed(2)); // "42.59"
+    console.log(d.toFixed(3)); // "42.590"
+    console.log(d.toFixed(4)); // "42.5900"
+
+    console.log(d.toPrecision(1)); // "4e+1"
+    console.log(d.toPrecision(2)); // "43"
+    console.log(d.toPrecision(3)); // "42.6"
+    console.log(d.toPrecision(4)); // "42.59"
+    console.log(d.toPrecision(5)); // "42.590"
+    console.log(d.toPrecision(6)); // "42.5900"
+
+    // 42.toFixed(3); // SyntaxError
+    console.log((42).toFixed(3)); // "42.000"
+    console.log(0.42.toFixed(3)); // "0.420"
+    console.log(42..toFixed(3)); // "42.000"
+    console.log(42 .toFixed(3)); // "42.000"
+
+    var e = 1e3; // means 1 * 10^3
+    var f = 1.1e6; // means 1.1 * 10^6
+
+    console.log(0xf3); // hexadecimal for: 243
+    console.log(0o363); // octal for: 243
+    console.log(0b11110011); // binary for: 243
+</script>
