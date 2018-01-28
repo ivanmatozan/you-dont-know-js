@@ -1,0 +1,27 @@
+<script>
+    var a = new Array(1, 2, 3);
+    var b = Array(1, 2, 3);
+    var c = [1, 2, 3];
+
+    var d = Array(3);
+    var e = [undefined, undefined, undefined];
+    var f = [];
+    f.length = 3;
+    console.log(d.length); // 3
+    console.log(d); // [empty × 3]
+    console.log(e.length); // 3
+    console.log(e); // [undefined, undefined, undefined]
+    console.log(f.length); // 3
+    console.log(f); // []
+
+    console.log(d.join("-")); // "--"
+    console.log(e.join("-")); // "--"
+    console.log(f.join("-")); // "--"
+
+    console.log(d.map(function (v, i) {return i})); // [empty × 3]
+    console.log(e.map(function (v, i) {return i})); // [0, 1, 2]
+    console.log(f.map(function (v, i) {return i})); // [empty × 3]
+
+    var emptyArr = Array.apply(null, {length: 3});
+    console.log(emptyArr); // [undefined, undefined, undefined]
+</script>

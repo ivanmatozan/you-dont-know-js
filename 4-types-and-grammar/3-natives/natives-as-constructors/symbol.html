@@ -1,0 +1,10 @@
+<script>
+    var mySymbol = Symbol("My own symbol");
+    console.log(mySymbol); // Symbol(My own symbol)
+    console.log(mySymbol.toString()); // "Symbol(My own symbol)"
+    console.log(typeof mySymbol); // "symbol"
+
+    var a = {};
+    a[mySymbol] = "foobar";
+    console.log(Object.getOwnPropertySymbols(a)); // [Symbol(My own symbol)]
+</script>

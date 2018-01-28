@@ -1,0 +1,30 @@
+<script>
+    var a = new Object();
+    var b = Object();
+    var c = {foo: "cba"};
+
+    a.foo = "abc";
+    console.log(a); // {foo: "abc"}
+    b.foo = "def";
+    console.log(b); // {foo: "def"}
+    console.log(c); // {foo: "cba"}
+
+    var d = new Function("a", "return a * 2");
+    var e = function (a) {
+        return a * 2;
+    };
+    function f(a) {
+        return a * 2;
+    }
+
+    console.log(d(1)); // 2
+    console.log(e(2)); // 4
+    console.log(f(3)); // 6
+
+    var h = new RegExp("^a*b+", "g");
+    var g = /^a*b+/g;
+
+    var name = "Kyle";
+    var namePattern = new RegExp("\\b(?:" + name + ")+\\b", "ig");
+    var matches = "SomeText".match(namePattern);
+</script>

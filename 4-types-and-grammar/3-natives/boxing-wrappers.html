@@ -1,0 +1,35 @@
+<script>
+    var a = "abc";
+    console.log(a.length); // 3
+    console.log(a.toUpperCase()); // "ABC"
+
+    var b = new Boolean(false);
+
+    if (!b) {
+        console.log("Oops"); // never runs
+    }
+
+    var c = "cba";
+    var d = new String(c);
+    var e = Object(c);
+
+    console.log(typeof c); // "string"
+    console.log(typeof d); // "object"
+    console.log(typeof e); // "object"
+    console.log(d instanceof String); // true
+    console.log(e instanceof String); // true
+    console.log(Object.prototype.toString.call(d)); // [object String]
+    console.log(Object.prototype.toString.call(e)); // [object String]
+
+    // Unboxing
+    var x = new String("abc");
+    var y = new Number(42)
+    var z = new Boolean(true);
+    console.log(x.valueOf()); // "abc"
+    console.log(y.valueOf()); // 42
+    console.log(z.valueOf()); // true
+
+    var f = x + "";
+    console.log(typeof x); // "object"
+    console.log(typeof f); // "string"
+</script>
