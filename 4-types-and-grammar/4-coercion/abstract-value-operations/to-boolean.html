@@ -1,0 +1,24 @@
+<script>
+    // Falsy values
+    console.log(Boolean(undefined)); // false
+    console.log(Boolean(null)); // false
+    console.log(Boolean(false)); // false
+    console.log(Boolean(+0)); // false
+    console.log(Boolean(-0)); // false
+    console.log(Boolean(NaN)); // false
+    console.log(Boolean("")); // false
+
+    // Falsy object
+    console.log(Boolean(document.all)); // false
+
+    // Truthy values
+    var a = "false";
+    var b = "0";
+    var c = "''";
+    console.log(Boolean(a && b && c)); // true
+
+    var d = [];
+    var e = {};
+    var f = function () {};
+    console.log(Boolean(d && e && f)); // true
+</script>
