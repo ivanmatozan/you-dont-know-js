@@ -1,0 +1,30 @@
+<script>
+    var a = "42";
+    var b = "0";
+
+    var c = 42;
+    var d = 0;
+
+    var e = [1, 2];
+    var f = [3, 4];
+
+    console.log(a + b); // "420"
+    console.log(c + d); // 42
+    console.log(a + d); // "420"
+    console.log(b + c); // "042"
+    console.log(e + f); // "1,23,4"
+
+    var obj = {
+        valueOf: function () {
+            return 42;
+        },
+        toString: function () {
+            return 4;
+        }
+    };
+
+    console.log(obj + ""); // "42"
+    console.log(String(obj)); // "4"
+
+    console.log(a - 0); // 42
+</script>

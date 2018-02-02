@@ -1,0 +1,43 @@
+<script>
+    var a = "0";
+    var b = [];
+    var c = {};
+
+    var d = "";
+    var e = 0;
+    var f = null;
+    var g;
+
+    console.log(Boolean(a)); // true
+    console.log(Boolean(b)); // true
+    console.log(Boolean(c)); // true
+
+    console.log(Boolean(d)); // false
+    console.log(Boolean(e)); // false
+    console.log(Boolean(f)); // false
+    console.log(Boolean(g)); // false
+
+    console.log(!!a); // true
+    console.log(!!b); // true
+    console.log(!!c); // true
+
+    console.log(!!d); // false
+    console.log(!!e); // false
+    console.log(!!f); // false
+    console.log(!!g); // false
+
+    var arr = [
+        1,
+        function () {},
+        2,
+        function () {}
+    ];
+
+    console.log(JSON.stringify(arr)); // "[1,null,2,null]"
+    console.log(JSON.stringify(arr, function (key, val) {
+        if (typeof val === "function") {
+            return !val;
+        }
+        return val;
+    })); // "[1,false,2,false]"
+</script>

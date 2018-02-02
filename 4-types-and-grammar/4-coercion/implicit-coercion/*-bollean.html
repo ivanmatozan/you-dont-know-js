@@ -1,0 +1,37 @@
+<script>
+    var a = 42;
+    var b = "abc";
+    var c = null;
+
+    console.log(a || b); // 42
+    console.log(a && b); // "abc"
+    console.log(c || b); // "abc"
+    console.log(c && b); // null
+
+    a || b;
+    // roughly equivalent to:
+    a ? a : b;
+
+    a && b;
+    // roughly equivalent to:
+    a ? b : a;
+
+    function foo(a, b) {
+        a = a || "hello";
+        b = b || "world";
+
+        console.log(a + " " + b);
+    }
+
+    foo(); // "hello world"
+    foo("yeah", "yeah"); // "yeah yeah"
+    foo("That's it!", ""); // "That's it! world"
+
+    function bar() {
+        console.log(d);
+    }
+
+    var d = 42;
+    // first expression guards second expression
+    a && bar(); // 42
+</script>
