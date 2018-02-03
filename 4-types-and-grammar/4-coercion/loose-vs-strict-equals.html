@@ -1,0 +1,41 @@
+<script>
+    // Anything to boolean
+    var a = true;
+    var b = "42";
+
+    console.log(a == b); // false
+
+    // Comparing null to undefined
+    var c = null;
+    var d;
+
+    console.log(c == d); // true
+    console.log(c == null); // true
+    console.log(d == null); // true
+
+    console.log(a == false); // false
+    console.log(d == false); // false
+    console.log(a == ""); // false
+    console.log(d == ""); // false
+    console.log(a == 0); // false
+    console.log(d == 0); // false
+
+    // Comparing object ti non-object
+    var e = 42;
+    var f = [42];
+    console.log(e == f); // true
+
+    var g = "abc";
+    var h = Object(g); // same sa 'new String(g)'
+
+    console.log(g == h); // true
+    console.log(g === h); // false
+
+    var x = Object(null);
+    var y = Object(undefined);
+    var z = Object(NaN);
+
+    console.log(x == null); // false
+    console.log(y == undefined); // false
+    console.log(z == NaN); // false
+</script>

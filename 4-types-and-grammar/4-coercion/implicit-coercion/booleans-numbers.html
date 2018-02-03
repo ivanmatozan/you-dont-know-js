@@ -1,0 +1,24 @@
+<script>
+    // function onlyOne(a, b, c) {
+    //     return !!((a && !b && !c) || (!a && b && !c) || (!a && !b && c));
+    // }
+
+    function onlyOne() {
+        var sum = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            if (arguments[i]) {
+                sum += arguments[i];
+            }
+        }
+        return sum == 1;
+    }
+
+    var a = true;
+    var b = false;
+
+    console.log(onlyOne(a, b, b)); // true
+    console.log(onlyOne(b, a, b)); // true
+    console.log(onlyOne(a, b, a)); // false
+    console.log(onlyOne(b, b)); // false
+    console.log(onlyOne(b, a, b, b, b)); // true
+</script>
