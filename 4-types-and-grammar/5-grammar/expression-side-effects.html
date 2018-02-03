@@ -1,0 +1,54 @@
+<script>
+    function foo() {
+        g = g + 1;
+    }
+
+    var g = 1;
+    console.log(foo()); // undefined
+
+    var a = 42;
+    var a2 = 42;
+    var a3 = 42;
+    var a4 = 42;
+
+    var b = a++;
+    var c = ++a2;
+    var d = (a3++);
+    var e = (a4++, a4);
+
+    console.log(a); // 43
+    console.log(b); // 42
+    console.log(c); // 43
+    console.log(d); // 42
+    console.log(e); // 43
+
+    var obj = {
+        a: 42
+    };
+
+    console.log(obj.a); // 42
+    console.log(delete obj.a); // true
+    console.log(obj.a); // undefined
+
+    var f;
+    console.log(f = 42); // 42
+    console.log(f); // 42
+
+    var x, y, z;
+    x = y = z = 42;
+    // var x = y = z = 42; // This is mistake
+
+    function vowels(string) {
+        var matches;
+
+        if (string) {
+            matches = string.match(/[aeiou]/g);
+
+            if (matches) {
+                return matches;
+            }
+        }
+    }
+
+    console.log(vowels("Hello World")); // ["e", "o", "o"]
+</script>

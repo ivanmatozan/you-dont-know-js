@@ -1,0 +1,44 @@
+<script>
+    function foo() {
+        try {
+            return 42;
+            // throw 42;
+        } finally {
+            console.log("Hello");
+        }
+        console.log("Never runs");
+    }
+
+    console.log(foo());
+    // "Hello"
+    // 42 (Uncaught Exception)
+
+    function bar() {
+        try {
+            return 42;
+        } finally {
+            throw "Error";
+        }
+        console.log("Never runs");
+    }
+
+    // console.log(bar()); // Uncaught Exception
+
+    for (var i = 0; i < 10; i++) {
+        try {
+            continue;
+        } finally {
+            console.log(i);
+        }
+    } // 0 1 2 3 4 5 6 7 8 9
+
+    function baz() {
+        try {
+            return 42;
+        } finally {
+            return "Hello";
+        }
+    }
+
+    console.log(baz()); // "Hello"
+</script>
